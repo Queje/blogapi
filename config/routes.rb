@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :articles do
+    resources :comments
+  end
 
-  resources :articles
   namespace :api, defaults: { format: :json } do
     resources :users, only: %w[show]
   end

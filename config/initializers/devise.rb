@@ -17,7 +17,7 @@ Devise.setup do |config|
   # config.secret_key = '9760dcd51dc767efeffd907b2d6a01e2ef8ab8b4b2ad498e6ddba358a37b246522da2fd88fe9ae8cd873c2964d78dd724f51adee9c10ce1830e881689db8c570'
 
   config.jwt do |jwt|
-    jwt.secret = "f7c620ad34f17239e52fbcfd623336ec3b9ae87dc6e0e4806d2ebac1ba0fefd1cffc1dc977ef70b79b1ceb11c36a0b480c79390521801a36246decb3c3ea8efd"
+    jwt.secret = ENV['SECRET_API_KEY']
 		jwt.dispatch_requests = [
 	    ['POST', %r{^/api/login$}]
 	  ]

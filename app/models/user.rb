@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :articles
+  has_many :comments
 
   validates :email, :uniqueness => {:allow_blank => true}
 

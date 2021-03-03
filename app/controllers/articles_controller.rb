@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      render json: @article, status: :created, location: @article
+      render json: @article, status: :created
     else
       puts(article_params)
       render json: @article.errors, status: :unprocessable_entity
@@ -28,7 +28,8 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
-    if @article.update(article_params)
+    if @article.user_id === current_user.id 
+      @article.update(article_params)
       render json: @article
     else
       render json: @article.errors, status: :unprocessable_entity
