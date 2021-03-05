@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.where(private: false)
+    @articles = Article.where(private: false).order(created_at: :desc)
 
     render json: @articles
   end
@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
       render json: @article, status: :created
     else
       puts(article_params)
-      render json: @article.errors, status: :unprocessable_entity
+      render json: @article.errors.messages, status: :unprocessable_entity
     end
   end
 
